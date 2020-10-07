@@ -21,12 +21,12 @@ int main(int argc, char* argv[])
 	//Entity(0,100,grassTexture),
 	//Entity(100,0,grassTexture) };
 
-	std::vector<Entity> entities = { Entity(0,0,grassTexture),
-	Entity(0,100,grassTexture),
-	Entity(100,0,grassTexture) };
+	std::vector<Entity> entities = { Entity(Vector2f(0,0),grassTexture),
+	Entity(Vector2f(50,0),grassTexture),
+	Entity(Vector2f(0,100),grassTexture) };
 
 	{
-		Entity ent(100, 100, grassTexture);
+		Entity ent(Vector2f(100, 0), grassTexture);
 		entities.push_back(ent);
 	}
 	
