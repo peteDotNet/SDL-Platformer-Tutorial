@@ -160,6 +160,7 @@
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="Math.hpp" />
     <ClInclude Include="RenderWindow.hpp" />
+    <ClInclude Include="Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="ground_grass_1.png" />
