@@ -121,13 +121,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\peter.morton\Documents\C++\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\peter.morton\Documents\C++\SDL2_ttf-2.0.15\include;C:\Users\peter.morton\Documents\C++\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\peter.morton\Documents\C++\SDL2-2.0.12\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\Users\peter.morton\Documents\C++\SDL2_ttf-2.0.15\lib\x64;C:\Users\peter.morton\Documents\C++\SDL2-2.0.12\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,23 +148,31 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RenderWindow.cpp" />
+    <ClCompile Include="Text.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\..\..\Documents\C++\SDL2_image-2.0.5\lib\x64\SDL2_image.dll" />
     <None Include="hulking_knight.ase" />
     <None Include="SDL2.dll" />
+    <None Include="SDL2_ttf.dll" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.hpp" />
     <ClInclude Include="Math.hpp" />
     <ClInclude Include="RenderWindow.hpp" />
+    <ClInclude Include="Text.hpp" />
     <ClInclude Include="Utils.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="apple.png" />
+    <Image Include="cobraBody.png" />
+    <Image Include="cobraHead.png" />
     <Image Include="ground_grass_1.png" />
     <Image Include="hulking_knight.png" />
+    <Image Include="snake.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
