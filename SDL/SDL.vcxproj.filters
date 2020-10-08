@@ -24,10 +24,16 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="RenderWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,12 +47,27 @@
     <None Include="hulking_knight.ase">
       <Filter>Resource Files\dev</Filter>
     </None>
+    <None Include="SDL2_ttf.dll">
+      <Filter>Source Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="ground_grass_1.png">
       <Filter>Resource Files\images</Filter>
     </Image>
     <Image Include="hulking_knight.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="apple.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="cobraHead.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="cobraBody.png">
+      <Filter>Resource Files\images</Filter>
+    </Image>
+    <Image Include="snake.png">
       <Filter>Resource Files\images</Filter>
     </Image>
   </ItemGroup>
@@ -61,6 +82,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Utils.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

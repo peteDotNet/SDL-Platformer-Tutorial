@@ -2,9 +2,16 @@
 #include <iostream>
 #include <SDL_image.h>
 #include <vector>
+#include <conio.h>
+#include <windows.h>
+#include <SDL_ttf.h>
+
+
 #include "RenderWindow.hpp"
 #include "Entity.hpp"
 #include "Utils.hpp"
+
+
 
 int main(int argc, char* argv[])
 {
@@ -14,23 +21,21 @@ int main(int argc, char* argv[])
 	if (!IMG_Init(IMG_INIT_PNG))
 		std::cout << "IMG_init has failed: " << SDL_GetError() << std::endl;
 
-	RenderWindow window("Game v1.0", 1280, 720);
+	if (TTF_Init() == -1)
+		std::cout << "TTF_init has failed: " << SDL_GetError() << std::endl;
+		
+
+	RenderWindow window("Game v1.0", 500, 500);
 	int windowRefreshRate = window.getRefreshRate();
 
-	SDL_Texture* grassTexture = window.loadTexture("ground_grass_1.png");
+	SDL_Texture* snakeBody = window.loadTexture("cobraBody.png");
+	SDL_Texture* snakeHead = window.loadTexture("snake.png");
+	SDL_Texture* appleTexture = window.loadTexture("apple.png");
 
-	//Entity entities[3] = { Entity(0,0,grassTexture),
-	//Entity(0,100,grassTexture),
-	//Entity(100,0,grassTexture) };
+	std::vector<Entity> tailEntities = { Entity(Vector2f(200,200),snakeBody) };
+	Entity head = Entity(Vector2f(50,50),snakeHead);
+	Entity food = Entity(Vector2f(100, 100), appleTexture);
 
-	std::vector<Entity> entities = { Entity(Vector2f(0,0),grassTexture),
-	Entity(Vector2f(50,0),grassTexture),
-	Entity(Vector2f(0,100),grassTexture) };
-
-	{
-		Entity ent(Vector2f(100, 0), grassTexture);
-		entities.push_back(ent);
-	}
 
 
 	bool gameRunning = true;
@@ -63,28 +68,66 @@ int main(int argc, char* argv[])
 			accumlator -= timeStep;
 		}
 
+
 		const float alpha = accumlator / timeStep;
+
+
 
 		window.clear();
 
-		for (Entity& e : entities)
+		
+		utils::initBody(head, tailEntities);
+
+		head.Input();
+		head.Move();
+
+
+
+		gameRunning =  utils::checkForClashWithWalls(head);
+
+		utils::checkForClashWithFood(head, food, tailEntities, snakeBody);
+
+		for (Entity& e : tailEntities)
 		{
 			window.render(e);
 		}
+
+		window.render(food);
+		window.render(head);
+
 
 
 		window.display();
 
 		int frameTicks = SDL_GetTicks() - startTick;
 
-		if (frameTicks < 1000/ window.getRefreshRate())
+		if (frameTicks < 1000 / window.getRefreshRate())
 			SDL_Delay((1000 / window.getRefreshRate()) - frameTicks);
 	}
 
+
+
+	window.clear();
+
+
+
+
+	SDL_Delay(5000);
 	window.cleanUp();
 
 
+
 	SDL_Quit();
+	TTF_Quit();
 
 	return 0;
+
 }
+
+
+
+
+
+
+
+
