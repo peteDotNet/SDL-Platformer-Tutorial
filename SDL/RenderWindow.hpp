@@ -14,6 +14,7 @@ public:
 	void clear();
 	void render(Entity& p_entity);
 	void display();
+	SDL_Renderer* GetRenderer();
 private:
 	SDL_Window* window;
 	SDL_Renderer* renderer;

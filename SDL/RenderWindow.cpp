@@ -9,15 +9,12 @@ RenderWindow::RenderWindow(const char* p_title, int p_w, int p_h)
 {
 	window = SDL_CreateWindow(p_title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, p_w, p_h, SDL_WINDOW_SHOWN);
 
-	
-
 	if (window == NULL)
 		std::cout << "Window failed to init. Error: " << SDL_GetError() << std::endl;
 	
 	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	SDL_SetRenderDrawColor(renderer, 60, 60, 60, 100);
-
 }
 
 SDL_Texture* RenderWindow::loadTexture(const char* p_filePath) {
@@ -28,7 +25,6 @@ SDL_Texture* RenderWindow::loadTexture(const char* p_filePath) {
 		std::cout << "Failed to load texture. Error: " << SDL_GetError() << std::endl;
 
 	return texture;
-
 }
 
 int RenderWindow::getRefreshRate() {
@@ -40,9 +36,9 @@ int RenderWindow::getRefreshRate() {
 	return mode.refresh_rate;
 }
 
+
 void RenderWindow::cleanUp() {
 	SDL_DestroyWindow(window);
-	
 }
 
 void RenderWindow::clear() {
@@ -67,4 +63,8 @@ void RenderWindow::render(Entity& p_entity) {
 
 void RenderWindow::display() {
 	SDL_RenderPresent(renderer);
+}
+
+SDL_Renderer* RenderWindow::GetRenderer() {
+	return renderer;
 }
